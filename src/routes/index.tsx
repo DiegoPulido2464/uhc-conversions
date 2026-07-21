@@ -1088,9 +1088,9 @@ function ContactAndFooter() {
                 <img
                   src={logoAsset.url}
                   alt="United Helping Center logo"
-                  width={144}
-                  height={48}
-                  className="h-10 w-auto object-contain brightness-0 invert"
+                  width={192}
+                  height={64}
+                  className="h-14 w-auto object-contain brightness-0 invert"
                 />
               </div>
               <p className="mt-4 text-sm text-white/70">{t.footer.about}</p>
