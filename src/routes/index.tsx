@@ -580,12 +580,13 @@ function Navbar({ dark, setDark }: { dark: boolean; setDark: (v: boolean) => voi
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <a href="#top" className="flex items-center gap-2">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-cta text-primary-foreground shadow-soft">
-            <Sparkles className="h-5 w-5" />
-          </span>
-          <span className="font-display text-lg font-bold tracking-tight">
-            United <span className="text-primary">Helping</span> Center
-          </span>
+          <img
+            src={logoAsset.url}
+            alt="United Helping Center logo"
+            width={144}
+            height={48}
+            className="h-10 w-auto object-contain"
+          />
         </a>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -1084,10 +1085,13 @@ function ContactAndFooter() {
           <div className="grid gap-10 lg:grid-cols-4">
             <div>
               <div className="flex items-center gap-2">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/10">
-                  <Sparkles className="h-5 w-5" />
-                </span>
-                <span className="font-display text-lg font-bold text-white">United Helping Center</span>
+                <img
+                  src={logoAsset.url}
+                  alt="United Helping Center logo"
+                  width={144}
+                  height={48}
+                  className="h-10 w-auto object-contain brightness-0 invert"
+                />
               </div>
               <p className="mt-4 text-sm text-white/70">{t.footer.about}</p>
               <div className="mt-6 flex gap-3">
