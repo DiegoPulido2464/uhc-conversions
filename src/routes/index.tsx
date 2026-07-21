@@ -1085,13 +1085,15 @@ function ContactAndFooter() {
           <div className="grid gap-10 lg:grid-cols-4">
             <div>
               <div className="flex items-center gap-2">
-                <img
-                  src={logoAsset.url}
-                  alt="United Helping Center logo"
-                  width={192}
-                  height={64}
-                  className="h-14 w-auto object-contain brightness-0 invert"
-                />
+                <div className="rounded-xl bg-white p-2 shadow-sm">
+                  <img
+                    src={logoAsset.url}
+                    alt="United Helping Center logo"
+                    width={168}
+                    height={48}
+                    className="h-10 w-auto object-contain"
+                  />
+                </div>
               </div>
               <p className="mt-4 text-sm text-white/70">{t.footer.about}</p>
               <div className="mt-6 flex gap-3">
