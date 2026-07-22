@@ -725,7 +725,7 @@ function Hero() {
 
         <div className="animate-fade-up relative" style={{ animationDelay: "0.15s" }}>
           <div className="relative overflow-hidden rounded-3xl border border-white/20 shadow-elegant">
-            <img src={heroImg} alt="UHC BPO team" width={1600} height={1100} className="h-full w-full object-cover" />
+            <img src={heroImg.url} alt="UHC BPO team" width={1600} height={1100} className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-tr from-primary-dark/40 via-transparent to-transparent" />
           </div>
           <div className="animate-float absolute -bottom-6 -left-6 hidden w-64 rounded-2xl border border-white/20 bg-white/95 p-4 text-foreground shadow-elegant backdrop-blur sm:block">
