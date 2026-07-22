@@ -520,29 +520,35 @@ function useCounter(target: number, start: boolean, duration = 1800) {
 
 /* ------------------------- Components ------------------------- */
 
-function LangToggle({ compact = false }: { compact?: boolean }) {
+function LangToggle({ compact = false, scrolled = true }: { compact?: boolean; scrolled?: boolean }) {
   const { lang, setLang } = useI18n();
+  const container = scrolled
+    ? "inline-flex items-center rounded-xl border border-border bg-background/50 p-1 text-xs font-semibold"
+    : "inline-flex items-center rounded-xl border border-white/20 bg-white/10 p-1 text-xs font-semibold";
+  const compactBtn = scrolled
+    ? "inline-flex items-center gap-1.5 rounded-xl border border-border bg-background/50 px-3 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-accent"
+    : "inline-flex items-center gap-1.5 rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/20";
   if (compact) {
     return (
-      <button
-        onClick={() => setLang(lang === "en" ? "es" : "en")}
-        aria-label="Toggle language"
-        className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background/50 px-3 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-accent"
-      >
+      <button onClick={() => setLang(lang === "en" ? "es" : "en")} aria-label="Toggle language" className={compactBtn}>
         <Languages className="h-4 w-4" />
         {lang.toUpperCase()}
       </button>
     );
   }
   return (
-    <div className="inline-flex items-center rounded-xl border border-border bg-background/50 p-1 text-xs font-semibold">
+    <div className={container}>
       {(["en", "es"] as const).map((l) => (
         <button
           key={l}
           onClick={() => setLang(l)}
           aria-pressed={lang === l}
           className={`rounded-lg px-2.5 py-1.5 transition-colors ${
-            lang === l ? "bg-primary text-primary-foreground shadow-soft" : "text-foreground/70 hover:text-primary"
+            lang === l
+              ? "bg-primary text-primary-foreground shadow-soft"
+              : scrolled
+                ? "text-foreground/70 hover:text-primary"
+                : "text-white/70 hover:text-white"
           }`}
         >
           {l.toUpperCase()}
@@ -572,10 +578,22 @@ function Navbar({ dark, setDark }: { dark: boolean; setDark: (v: boolean) => voi
     { href: "#contact", label: t.nav.contact },
   ];
 
+  const linkBase = scrolled
+    ? "rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-primary"
+    : "rounded-lg px-3 py-2 text-sm font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white";
+
+  const mobileLinkBase = scrolled
+    ? "rounded-lg px-3 py-3 text-sm font-medium text-foreground/80 hover:bg-accent hover:text-primary"
+    : "rounded-lg px-3 py-3 text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white";
+
+  const iconBtnBase = scrolled
+    ? "grid h-10 w-10 place-items-center rounded-xl border border-border bg-background/50 text-foreground transition-colors hover:bg-accent"
+    : "grid h-10 w-10 place-items-center rounded-xl border border-white/20 bg-white/10 text-white transition-colors hover:bg-white/20";
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass shadow-soft" : "bg-transparent"
+        scrolled ? "glass shadow-soft" : "bg-transparent text-white"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
@@ -591,11 +609,7 @@ function Navbar({ dark, setDark }: { dark: boolean; setDark: (v: boolean) => voi
 
         <nav className="hidden items-center gap-1 lg:flex">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-primary"
-            >
+            <a key={l.href} href={l.href} className={linkBase}>
               {l.label}
             </a>
           ))}
@@ -603,15 +617,15 @@ function Navbar({ dark, setDark }: { dark: boolean; setDark: (v: boolean) => voi
 
         <div className="flex items-center gap-2">
           <div className="hidden sm:block">
-            <LangToggle />
+            <LangToggle scrolled={scrolled} />
           </div>
           <div className="sm:hidden">
-            <LangToggle compact />
+            <LangToggle compact scrolled={scrolled} />
           </div>
           <button
             aria-label="Toggle dark mode"
             onClick={() => setDark(!dark)}
-            className="grid h-10 w-10 place-items-center rounded-xl border border-border bg-background/50 text-foreground transition-colors hover:bg-accent"
+            className={iconBtnBase}
           >
             {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
@@ -624,7 +638,7 @@ function Navbar({ dark, setDark }: { dark: boolean; setDark: (v: boolean) => voi
           <button
             aria-label="Open menu"
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 place-items-center rounded-xl border border-border bg-background/50 lg:hidden"
+            className={`${iconBtnBase} lg:hidden`}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -632,14 +646,18 @@ function Navbar({ dark, setDark }: { dark: boolean; setDark: (v: boolean) => voi
       </div>
 
       {open && (
-        <div className="border-t border-border glass lg:hidden">
+        <div
+          className={`border-t lg:hidden ${
+            scrolled ? "border-border glass" : "border-white/10 bg-primary-dark/95 text-white"
+          }`}
+        >
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-medium text-foreground/80 hover:bg-accent hover:text-primary"
+                className={mobileLinkBase}
               >
                 {l.label}
               </a>
