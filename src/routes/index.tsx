@@ -520,29 +520,35 @@ function useCounter(target: number, start: boolean, duration = 1800) {
 
 /* ------------------------- Components ------------------------- */
 
-function LangToggle({ compact = false }: { compact?: boolean }) {
+function LangToggle({ compact = false, scrolled = true }: { compact?: boolean; scrolled?: boolean }) {
   const { lang, setLang } = useI18n();
+  const container = scrolled
+    ? "inline-flex items-center rounded-xl border border-border bg-background/50 p-1 text-xs font-semibold"
+    : "inline-flex items-center rounded-xl border border-white/20 bg-white/10 p-1 text-xs font-semibold";
+  const compactBtn = scrolled
+    ? "inline-flex items-center gap-1.5 rounded-xl border border-border bg-background/50 px-3 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-accent"
+    : "inline-flex items-center gap-1.5 rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/20";
   if (compact) {
     return (
-      <button
-        onClick={() => setLang(lang === "en" ? "es" : "en")}
-        aria-label="Toggle language"
-        className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background/50 px-3 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-accent"
-      >
+      <button onClick={() => setLang(lang === "en" ? "es" : "en")} aria-label="Toggle language" className={compactBtn}>
         <Languages className="h-4 w-4" />
         {lang.toUpperCase()}
       </button>
     );
   }
   return (
-    <div className="inline-flex items-center rounded-xl border border-border bg-background/50 p-1 text-xs font-semibold">
+    <div className={container}>
       {(["en", "es"] as const).map((l) => (
         <button
           key={l}
           onClick={() => setLang(l)}
           aria-pressed={lang === l}
           className={`rounded-lg px-2.5 py-1.5 transition-colors ${
-            lang === l ? "bg-primary text-primary-foreground shadow-soft" : "text-foreground/70 hover:text-primary"
+            lang === l
+              ? "bg-primary text-primary-foreground shadow-soft"
+              : scrolled
+                ? "text-foreground/70 hover:text-primary"
+                : "text-white/70 hover:text-white"
           }`}
         >
           {l.toUpperCase()}
