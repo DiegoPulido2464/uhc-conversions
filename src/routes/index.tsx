@@ -52,7 +52,7 @@ import {
   Zap,
 } from "lucide-react";
 
-import heroImg from "@/assets/hero-bpo.jpg";
+import heroImg from "@/assets/UHC.jpg.asset.json";
 import teamImg from "@/assets/about-team.jpg";
 import t1 from "@/assets/testimonial-1.jpg";
 import t2 from "@/assets/testimonial-2.jpg";
