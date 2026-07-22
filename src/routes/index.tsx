@@ -1085,13 +1085,13 @@ function ContactAndFooter() {
           <div className="grid gap-10 lg:grid-cols-4">
             <div>
               <div className="flex items-center gap-2">
-                <div className="rounded-xl bg-white p-2 shadow-sm">
+                <div className="h-12 w-12 overflow-hidden rounded-full bg-white p-1 shadow-sm">
                   <img
                     src={logoAsset.url}
                     alt="United Helping Center logo"
-                    width={168}
+                    width={48}
                     height={48}
-                    className="h-10 w-auto object-contain"
+                    className="h-full w-full object-contain"
                   />
                 </div>
               </div>
