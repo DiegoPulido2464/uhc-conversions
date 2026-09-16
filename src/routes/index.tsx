@@ -639,6 +639,16 @@ function Navbar({ dark, setDark }: { dark: boolean; setDark: (v: boolean) => voi
               {l.label}
             </a>
           ))}
+          <Link
+            to="/corporate-client"
+            className={`ml-1 rounded-xl px-3 py-2 text-sm font-semibold transition-all ${
+              scrolled
+                ? "bg-primary text-primary-foreground shadow-soft hover:-translate-y-0.5"
+                : "bg-primary text-primary-foreground shadow-soft hover:-translate-y-0.5"
+            }`}
+          >
+            {t.nav.corporate}
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -688,6 +698,13 @@ function Navbar({ dark, setDark }: { dark: boolean; setDark: (v: boolean) => voi
                 {l.label}
               </a>
             ))}
+            <Link
+              to="/corporate-client"
+              onClick={() => setOpen(false)}
+              className="mt-1 rounded-xl bg-primary px-3 py-3 text-sm font-semibold text-primary-foreground"
+            >
+              {t.nav.corporate}
+            </Link>
             <a
               href="#contact"
               onClick={() => setOpen(false)}
