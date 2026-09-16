@@ -601,6 +601,7 @@ function Navbar({ dark, setDark }: { dark: boolean; setDark: (v: boolean) => voi
     { href: "#why", label: t.nav.why },
     { href: "#process", label: t.nav.process },
     { href: "#sectors", label: t.nav.industries },
+    { href: "#corporate", label: t.nav.corporate },
     { href: "#contact", label: t.nav.contact },
   ];
 
@@ -971,6 +972,37 @@ function Sectors() {
   );
 }
 
+function CorporateClients() {
+  const { t } = useI18n();
+  const icons = [Building2, Home, Landmark, Users];
+  return (
+    <section id="corporate" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionTitle eyebrow={t.corporateClient.eyebrow} title={t.corporateClient.title} desc={t.corporateClient.desc} />
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {t.corporateClient.items.map((item, i) => {
+            const Icon = icons[i];
+            return (
+              <div key={item.title} className="group rounded-2xl border border-border bg-card p-7 shadow-soft transition-all hover:-translate-y-1 hover:shadow-elegant">
+                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-cta text-primary-foreground shadow-soft">
+                  <Icon className="h-7 w-7" />
+                </div>
+                <h3 className="mt-5 font-display text-xl font-semibold">{item.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{item.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+        <div className="mt-12 text-center">
+          <a href="#contact" className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5">
+            {t.corporateClient.cta} <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Testimonials() {
   const { t } = useI18n();
   const [i, setI] = useState(0);
@@ -1157,6 +1189,7 @@ function ContactAndFooter() {
                   { href: "#why", label: t.nav.why },
                   { href: "#process", label: t.nav.process },
                   { href: "#sectors", label: t.nav.industries },
+                  { href: "#corporate", label: t.nav.corporate },
                   { href: "#contact", label: t.nav.contact },
                 ].map((l) => (
                   <li key={l.href}><a href={l.href} className="transition-colors hover:text-white">{l.label}</a></li>
@@ -1238,6 +1271,7 @@ function LandingPage() {
           <Why />
           <Process />
           <Sectors />
+          <CorporateClients />
           <Testimonials />
           <CTA />
           <ContactAndFooter />
