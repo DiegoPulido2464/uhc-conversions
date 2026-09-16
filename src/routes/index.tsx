@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   createContext,
   useContext,
@@ -601,7 +601,6 @@ function Navbar({ dark, setDark }: { dark: boolean; setDark: (v: boolean) => voi
     { href: "#why", label: t.nav.why },
     { href: "#process", label: t.nav.process },
     { href: "#sectors", label: t.nav.industries },
-    { href: "#corporate", label: t.nav.corporate },
     { href: "#contact", label: t.nav.contact },
   ];
 
