@@ -97,6 +97,7 @@ const dict = {
       why: "Why UHC",
       process: "Process",
       industries: "Industries",
+      corporate: "Corporate",
       contact: "Contact",
       bookCall: "Book a call",
     },
@@ -192,6 +193,18 @@ const dict = {
         { title: "Real Estate Agencies", desc: "Multi-market agencies unifying customer support." },
       ],
     },
+    corporateClient: {
+      eyebrow: "Enterprise",
+      title: "CORPORATE CLIENT",
+      desc: "Dedicated BPO pods, SLAs and custom playbooks for large real estate organizations across the United States.",
+      items: [
+        { title: "Brokerages", desc: "Multi-office ISA teams, lead routing and brand-compliant scripts at scale." },
+        { title: "Builders & Developers", desc: "High-volume new development inquiry handling and appointment setting." },
+        { title: "Mortgage Lenders", desc: "Borrower pre-qualification, document follow-up and loan officer support." },
+        { title: "Property Managers", desc: "Tenant screening, maintenance coordination and lease renewal campaigns." },
+      ],
+      cta: "Talk to our enterprise team",
+    },
     testimonials: {
       eyebrow: "Testimonials",
       title: "Trusted by real estate leaders",
@@ -267,6 +280,7 @@ const dict = {
       why: "Por qué UHC",
       process: "Proceso",
       industries: "Industrias",
+      corporate: "Corporativo",
       contact: "Contacto",
       bookCall: "Agendar llamada",
     },
@@ -361,6 +375,18 @@ const dict = {
         { title: "Hipotecarias", desc: "Oficiales de préstamos precalificando prestatarios." },
         { title: "Agencias Inmobiliarias", desc: "Agencias multi-mercado unificando su atención al cliente." },
       ],
+    },
+    corporateClient: {
+      eyebrow: "Empresas",
+      title: "CLIENTE CORPORATIVO",
+      desc: "Equipos BPO dedicados, SLAs y playbooks personalizados para grandes organizaciones inmobiliarias en Estados Unidos.",
+      items: [
+        { title: "Corredurías", desc: "Equipos ISA multi-oficina, enrutamiento de leads y guiones ajustados a tu marca." },
+        { title: "Constructores y Desarrolladores", desc: "Gestión de alto volumen de consultas de nuevos desarrollos y agendamiento." },
+        { title: "Prestamistas Hipotecarios", desc: "Precalificación de prestatarios, seguimiento documental y soporte a oficiales de préstamos." },
+        { title: "Administradoras de Propiedades", desc: "Selección de inquilinos, coordinación de mantenimiento y campañas de renovación." },
+      ],
+      cta: "Habla con nuestro equipo empresarial",
     },
     testimonials: {
       eyebrow: "Testimonios",
